@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "İKÜ Course Seat Bot",
+  "version": "1.7.0",
+  "description": "Watch configured İKÜ Orion course sections in separate tabs and add them to the registration basket when seats open.",
+  "permissions": ["alarms", "storage", "tabs", "notifications"],
+  "host_permissions": ["https://orion.iku.edu.tr/*"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "Course Seat Bot",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://orion.iku.edu.tr/*"],
+      "js": ["page-control.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://orion.iku.edu.tr/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

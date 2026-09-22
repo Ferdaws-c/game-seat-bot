@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Course Seat Bot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header><div class="mark">●</div><div><h1>Course Seat Bot</h1><p>One watcher per Orion tab</p></div></header>
+    <section class="status"><span id="dot"></span><div><strong id="state">Loading…</strong><small id="detail"></small></div></section>
+    <div class="tabs" role="tablist" aria-label="Course settings">
+      <button id="courseTab" type="button" role="tab" aria-controls="coursePanel" aria-selected="true">Course</button>
+      <button id="savedTab" type="button" role="tab" aria-controls="savedPanel" aria-selected="false">Saved courses <span id="savedCount">0</span></button>
+    </div>
+    <section id="coursePanel" role="tabpanel" aria-labelledby="courseTab">
+    <form id="form">
+      <label>Course code <small>as shown before the course name</small><input id="courseCode" required maxlength="32" placeholder="SEN0416 or MCB1001 *1" autocomplete="off"></label>
+      <label>Course name<input id="courseName" required placeholder="GAME PROGRAMMING" autocomplete="off"></label>
+      <label>Section type<select id="selectionMode"><option value="labTheory">Lab + theory</option><option value="theoryOnly">Theory only</option><option value="single">Single section / online</option></select></label>
+      <label>Section code <small>optional if only one row matches</small><input id="sectionCode" placeholder="SEN0416-1 or MCB1001 *1-2" autocomplete="off"></label>
+      <div class="grid">
+        <label id="labTimeField">Lab time <small>optional</small><input id="labTime" placeholder="11:00-13:00" pattern="[0-9]{2}:[0-9]{2}-[0-9]{2}:[0-9]{2}"></label>
+        <label id="theoryTimeField"><span id="theoryTimeLabel">Theory time</span> <small>optional</small><input id="theoryTime" placeholder="09:00-11:00" pattern="[0-9]{2}:[0-9]{2}-[0-9]{2}:[0-9]{2}"></label>
+      </div>
+      <label>Refresh every (seconds)<input id="intervalSeconds" type="number" min="30" max="3600" step="1" value="60"></label>
+      <p id="editingSaved" class="editing">Current course is not saved.</p>
+      <div class="saved-actions"><button id="saveNew" type="button">Save as new</button><button id="updateSaved" type="button">Update saved</button></div>
+      <div class="actions"><button id="start" type="submit">Start watching</button><button id="stop" type="button">Stop</button></div>
+      <button id="test" type="button">Do a test run</button>
+    </form>
+    <p id="testResult" aria-live="polite"></p>
+    <p class="hint">Test run makes a real basket attempt. If a seat is available, it may add the course. Keep the Orion tab open and signed in.</p>
+    </section>
+    <section id="savedPanel" role="tabpanel" aria-labelledby="savedTab" hidden>
+      <label for="savedCourseSelect">Choose a saved course</label>
+      <select id="savedCourseSelect" aria-label="Saved course"><option value="">No saved courses</option></select>
+      <p id="savedSummary" class="saved-summary">Save a course from the Course tab to see it here.</p>
+      <div class="saved-actions"><button id="useSaved" type="button">Use this course</button><button id="deleteSaved" type="button">Delete</button></div>
+      <p class="hint">Use loads the saved settings into the Course tab. Start watching or run a test there.</p>
+    </section>
+    <p id="saveMessage" aria-live="polite"></p>
+    <p id="error" role="alert"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

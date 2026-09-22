@@ -1,0 +1,43 @@
+:root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; width: 370px; max-height: 600px; overflow-y: auto; color: #152033; background: #f4f7fb; }
+main { padding: 16px; }
+header { display: flex; align-items: center; gap: 11px; margin-bottom: 17px; }
+.mark { width: 35px; height: 35px; border-radius: 10px; display: grid; place-items: center; background: #136ed8; color: white; font-size: 25px; }
+h1 { font-size: 17px; margin: 0; line-height: 1.2; }
+header p { margin: 3px 0 0; color: #5c6a7a; font-size: 11px; }
+.status { display: flex; gap: 10px; align-items: flex-start; padding: 11px; margin-bottom: 15px; border: 1px solid #d8e2ee; border-radius: 10px; background: white; }
+#dot { width: 9px; height: 9px; margin-top: 5px; border-radius: 50%; background: #8794a4; flex: none; }
+#dot.active { background: #138e4b; }
+#dot.success { background: #138e4b; box-shadow: 0 0 0 4px #d9f3e5; }
+#dot.paused { background: #c55c1e; }
+.status strong, .status small { display: block; }
+.status small { color: #607080; margin-top: 2px; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 9px; background: #e1e9f2; }
+.tabs button { padding: 7px 9px; background: transparent; color: #425269; font-size: 12px; }
+.tabs button[aria-selected="true"] { color: #135aa9; background: white; box-shadow: 0 1px 3px #aebccc; }
+.tabs span { display: inline-block; min-width: 17px; padding: 0 4px; border-radius: 9px; background: #dbe9f9; }
+[hidden] { display: none !important; }
+label { display: block; font-weight: 650; margin-top: 10px; }
+label small { font-weight: 400; color: #667485; }
+input:not([type=range]), select { display: block; width: 100%; margin-top: 5px; padding: 8px 9px; background: white; color: #152033; border: 1px solid #c9d5e2; border-radius: 6px; font: inherit; }
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid #166ad1; outline-offset: 1px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#labTimeField[hidden] + #theoryTimeField { grid-column: 1 / -1; }
+.actions { display: flex; gap: 8px; margin-top: 16px; }
+button { border: 0; border-radius: 7px; padding: 9px 12px; font: inherit; font-weight: 700; cursor: pointer; }
+#start { flex: 1; color: white; background: #136ed8; }
+#stop { color: #35475e; background: #e1e9f2; }
+#test { width: 100%; margin-top: 8px; color: #1557a5; background: #dceafb; }
+#test:disabled { opacity: .55; cursor: not-allowed; }
+.saved-actions { display: flex; gap: 8px; margin-top: 8px; }
+.saved-actions button { flex: 1; padding: 8px 10px; font-size: 12px; color: #1557a5; background: #dceafb; }
+#deleteSaved { color: #a22b2b; background: #f9e4e4; }
+.editing, .saved-summary { margin: 12px 0 0; color: #56677d; font-size: 12px; }
+.saved-summary { min-height: 52px; padding: 11px; border: 1px solid #d8e2ee; border-radius: 8px; background: white; white-space: pre-line; }
+#saveMessage { color: #176d3d; min-height: 1em; margin: 10px 0 0; font-size: 12px; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+#testResult { color: #1557a5; min-height: 1em; margin: 9px 0 0; font-size: 12px; }
+button:hover { filter: brightness(.95); }
+.hint { color: #607080; font-size: 11px; margin: 14px 0 0; }
+#error { color: #b02828; min-height: 1em; margin: 8px 0 0; font-size: 12px; }
